@@ -1,7 +1,10 @@
 package com.model;
 
 import javax.annotation.Generated;
+import javax.persistence.AttributeOverride;
+import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -22,6 +25,14 @@ public class User {
 	
 	@Column(name = "age")
 	private long age;
+	
+	@Embedded
+	@AttributeOverrides({@AttributeOverride(name="street", column=@Column(name="street_name")),
+						@AttributeOverride(name="city", column=@Column(name="city_name")),
+						@AttributeOverride(name="state", column=@Column(name="state_name")),
+						@AttributeOverride(name="country", column=@Column(name="country_name")),
+		})
+	private Address address;
 
 	public int getUserId() {
 		return userId;
@@ -46,9 +57,14 @@ public class User {
 	public void setAge(long age) {
 		this.age = age;
 	}
-	
-	
-	
-	
 
+	public Address getAddress() {
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
+	}
+	
+	
 }

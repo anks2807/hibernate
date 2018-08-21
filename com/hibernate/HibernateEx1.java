@@ -7,6 +7,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
+import com.model.Address;
 import com.model.User;
 
 public class HibernateEx1 {
@@ -19,6 +20,14 @@ public class HibernateEx1 {
 		User user = new User();
 		user.setUserName("Jones");
 		user.setAge(45);
+		
+		Address address = new Address();
+		address.setStreet("abc");
+		address.setCity("noida");
+		address.setState("up");
+		address.setCountry("country");
+		
+		user.setAddress(address);
 		
 		Transaction transaction = session.beginTransaction();
 		
