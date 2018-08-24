@@ -1,14 +1,19 @@
 package com.model;
 
+import java.util.Collection;
+
 import javax.annotation.Generated;
 import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.Table;
 
 @Entity
@@ -26,13 +31,9 @@ public class User {
 	@Column(name = "age")
 	private long age;
 	
-	@Embedded
-	@AttributeOverrides({@AttributeOverride(name="street", column=@Column(name="street_name")),
-						@AttributeOverride(name="city", column=@Column(name="city_name")),
-						@AttributeOverride(name="state", column=@Column(name="state_name")),
-						@AttributeOverride(name="country", column=@Column(name="country_name")),
-		})
-	private Address address;
+	@ElementCollection
+	@JoinTable(name="user_address", joinColumns=@JoinColumn(name="user_id"))
+	private Collection<Address> address;
 
 	public int getUserId() {
 		return userId;
@@ -58,13 +59,15 @@ public class User {
 		this.age = age;
 	}
 
-	public Address getAddress() {
+	public Collection<Address> getAddress() {
 		return address;
 	}
 
-	public void setAddress(Address address) {
+	public void setAddress(Collection<Address> address) {
 		this.address = address;
 	}
+
+	
 	
 	
 }
