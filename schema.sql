@@ -2,6 +2,10 @@ create table user (user_id int primary key not null,
 					user_name varchar(50) not null,
                     age long not null);
                     
+                    
+create table vehicle (id int primary key not null,
+						name varchar(50) not null);
+                    
 alter table user modify column user_id int auto_increment;
 
 alter table user add column street_name varchar(500);
@@ -35,4 +39,9 @@ create table address (id int primary key auto_increment not null,
 create table user_address (person_id int, address_id int,
 						foreign key (person_id) references person(id),
 						foreign key (address_id) references address(id)
+)
+
+create table user_vehicle (user_id int, vehicle_id int,
+						foreign key (user_id) references user(user_id),
+						foreign key (vehicle_id) references vehicle(id)
 )

@@ -17,6 +17,8 @@
         <!-- <mapping class="com.model.User"/> -->
         <mapping class="com.model.Person"/>
         <mapping class="com.model.Address"/>
+        <mapping class="com.model.User"/>
+        <mapping class="com.model.Vehicle"/>
 
     </session-factory>
 </hibernate-configuration>

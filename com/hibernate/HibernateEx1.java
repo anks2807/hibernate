@@ -40,7 +40,7 @@ public class HibernateEx1 {
 		addresses.add(address2);
 		addresses.add(address1);
 		
-		user.setAddress(addresses);
+		//user.setAddress(addresses);
 		
 		
 		

@@ -1,19 +1,16 @@
 package com.model;
 
-import java.util.Collection;
+import java.util.List;
 
-import javax.annotation.Generated;
-import javax.persistence.AttributeOverride;
-import javax.persistence.AttributeOverrides;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
-import javax.persistence.ElementCollection;
-import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -31,9 +28,9 @@ public class User {
 	@Column(name = "age")
 	private long age;
 	
-	@ElementCollection
-	@JoinTable(name="user_address", joinColumns=@JoinColumn(name="user_id"))
-	private Collection<Address> address;
+	@ManyToMany(cascade=CascadeType.ALL)
+	@JoinTable(name="user_vehicle",joinColumns=@JoinColumn(name="user_id"),inverseJoinColumns=@JoinColumn(name="vehicle_id"))
+	private List<Vehicle> vehicles;
 
 	public int getUserId() {
 		return userId;
@@ -59,15 +56,13 @@ public class User {
 		this.age = age;
 	}
 
-	public Collection<Address> getAddress() {
-		return address;
+	public List<Vehicle> getVehicles() {
+		return vehicles;
 	}
 
-	public void setAddress(Collection<Address> address) {
-		this.address = address;
-	}
-
-	
+	public void setVehicles(List<Vehicle> vehicles) {
+		this.vehicles = vehicles;
+	}	
 	
 	
 }

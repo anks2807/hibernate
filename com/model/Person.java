@@ -27,9 +27,9 @@ public class Person {
 	@Column(name="age")
 	private int age;
 	
-	@OneToMany(cascade=CascadeType.ALL)
-	@JoinTable(name="user_address", joinColumns=@JoinColumn(name="person_id"),
-				inverseJoinColumns=@JoinColumn(name="address_id"))
+	@OneToMany(mappedBy="person")
+//	@JoinTable(name="user_address", joinColumns=@JoinColumn(name="person_id"),
+//				inverseJoinColumns=@JoinColumn(name="address_id"))
 	private List<Address> address;
 
 	public int getId() {
