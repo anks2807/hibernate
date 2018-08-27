@@ -1,6 +1,9 @@
 package com.hibernate;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -24,9 +27,19 @@ public class HibernateEx2 {
 		address1.setStreet("abc");
 		address1.setCity("noida");
 		address1.setState("up");
-		address1.setCountry("country");
+		address1.setCountry("india");
 		
-		person.setAddress(address1);
+		Address address2 = new Address();
+		address2.setStreet("abc2");
+		address2.setCity("aligarh");
+		address2.setState("up");
+		address2.setCountry("india");
+		
+		List<Address> addresses = new ArrayList<Address>();
+		addresses.add(address1);
+		addresses.add(address2);
+		
+		person.setAddress(addresses);
 		
 		org.hibernate.Transaction txn = session.beginTransaction();
 		session.save(person);

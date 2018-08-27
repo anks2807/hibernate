@@ -1,11 +1,16 @@
 package com.model;
 
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -22,8 +27,10 @@ public class Person {
 	@Column(name="age")
 	private int age;
 	
-	@OneToOne(cascade=CascadeType.ALL)
-	private Address address;
+	@OneToMany(cascade=CascadeType.ALL)
+	@JoinTable(name="user_address", joinColumns=@JoinColumn(name="person_id"),
+				inverseJoinColumns=@JoinColumn(name="address_id"))
+	private List<Address> address;
 
 	public int getId() {
 		return id;
@@ -49,15 +56,13 @@ public class Person {
 		this.age = age;
 	}
 
-	public Address getAddress() {
+	public List<Address> getAddress() {
 		return address;
 	}
 
-	public void setAddress(Address address) {
+	public void setAddress(List<Address> address) {
 		this.address = address;
 	}
-	
-	
 	
 	
 

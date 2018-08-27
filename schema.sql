@@ -24,4 +24,15 @@ create table person (id int primary key auto_increment not null,
 					name varchar(50) not null,
                     age long not null,
                     address_id int,
-                    foreign key (address_id) references address(id));                             
+                    foreign key (address_id) references address(id)); 
+                    
+create table address (id int primary key auto_increment not null,
+						street varchar(500),
+						city varchar(500),
+						state varchar(100),
+						country varchar(100));
+						
+create table user_address (person_id int, address_id int,
+						foreign key (person_id) references person(id),
+						foreign key (address_id) references address(id)
+)
