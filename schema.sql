@@ -45,3 +45,9 @@ create table user_vehicle (user_id int, vehicle_id int,
 						foreign key (user_id) references user(user_id),
 						foreign key (vehicle_id) references vehicle(id)
 )
+
+create table furniture (id int primary key auto_increment,
+furniture_type varchar(50),
+made_of varchar(50),
+manufacturing_company varchar(100),
+shape varchar(100));
