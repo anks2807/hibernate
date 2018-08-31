@@ -13,19 +13,19 @@ import javax.persistence.Table;
 @Entity
 @Table(name="address")
 public class Address {
-	
+
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
-	
+
 	private String street;
 	private String city;
 	private String state;
 	private String country;
-	
+
 	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="person_id")
 	private Person person;
-	
+
 	public String getStreet() {
 		return street;
 	}
@@ -56,8 +56,10 @@ public class Address {
 	public void setId(int id) {
 		this.id = id;
 	}
-	
-	
-	
-
+	public Person getPerson() {
+		return person;
+	}
+	public void setPerson(Person person) {
+		this.person = person;
+	}
 }
