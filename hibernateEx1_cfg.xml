@@ -12,6 +12,9 @@
         <property name="hibernate.current_session_context_class">thread</property> -->
         <property name="hibernate.show_sql">true</property>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+        <property name="cache.use_second_level_cache">true</property>
+        <!-- <property name="cache.provider_class">org.hibernate.cache.EhCacheProvider</property> -->
+        <property name="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</property>
        <!--  <property name="hibernate.hbm2ddl.auto">update</property> -->
         
         <!-- <mapping class="com.model.User"/> -->
@@ -20,9 +23,9 @@
         <mapping class="com.model.User"/>
         <mapping class="com.model.Vehicle"/> -->
         
-        <mapping class="com.model.Furniture"/>
+        <!-- <mapping class="com.model.Furniture"/>
         <mapping class="com.model.Chair"/>
-        <mapping class="com.model.Table"/>
-
+        <mapping class="com.model.Table"/> -->
+<mapping class="com.model.Employee"/>
     </session-factory>
 </hibernate-configuration>
