@@ -13,8 +13,8 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="furniture")
-@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
-//@DiscriminatorColumn(name="furniture_type",discriminatorType=DiscriminatorType.STRING)
+@Inheritance(strategy=InheritanceType.JOINED)
+@DiscriminatorColumn(name="furniture_type",discriminatorType=DiscriminatorType.STRING)
 public class Furniture {
 	
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)

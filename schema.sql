@@ -51,3 +51,9 @@ furniture_type varchar(50),
 made_of varchar(50),
 manufacturing_company varchar(100),
 shape varchar(100));
+
+create table chair (id int primary key auto_increment,
+manufacturing_company varchar(50));
+
+create table table1 (id int primary key auto_increment,
+shape varchar(50));
